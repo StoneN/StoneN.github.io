@@ -1,5 +1,5 @@
 # main text of home
-name: John Doe
+name: StoneNan
 bio: A Man who travels the world eating noodles
 
 # twitter summary info
@@ -16,7 +16,7 @@ resume: true
 resume-external: true
 resume-url: https://google.com/?q=my+resume
 
-url: https://koppl.in/indigo
+url: http://stonen.github.io
 # your url: http://USERNAME.github.io
 
 permalink: /:title/
@@ -42,13 +42,13 @@ twitter: mytwitter
 # linkedin: mylinkedin
 # youtube: myyoutube
 # spotify: myspotify
-github: mygithub
-# stackoverflow: 7044681/mystackoverflow
+github: StoneN
+stackoverflow: 7583930/stonen
 # quora: userquora
 # reddit: username
 medium: medium
 # vimeo: myvimeo
-email: myemail@gmail.com
+email: stonen_xt@163.com
 
 authors:
     johndoe:
