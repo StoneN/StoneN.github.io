@@ -34,9 +34,9 @@ disqus:
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
-facebook: myfacebook
-twitter: mytwitter
-# google: mygoogle
+facebook: stonen.xt
+twitter: StoneN_xt
+google: mygoogle
 # instagram: myinstagram
 # pinterest: mypinterest
 # linkedin: mylinkedin
@@ -46,17 +46,17 @@ github: StoneN
 stackoverflow: 7583930/stonen
 # quora: userquora
 # reddit: username
-medium: medium
+medium: @stonen.xt
 # vimeo: myvimeo
-email: stonen_xt@163.com
+email: stonen.xt@gmail.com
 
 authors:
-    johndoe:
-        name: John Doe
+    StoneN:
+        name: Stone Nan
         bio: A Man who travels the world eating noodles
         external-image: false
         picture: assets/images/profile.jpg
-        twitter: johndoe
+        twitter: StoneN_xt
     jamesfoster:
         name: James Foster
         bio: A Man who develops software with coffee
