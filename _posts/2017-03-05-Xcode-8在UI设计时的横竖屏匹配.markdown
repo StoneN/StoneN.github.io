@@ -1,5 +1,3 @@
-# Xcode 8在iosUI设计时的横竖屏匹配问题:
-
 > 资料来源 [AN INTRODUCTION TO SIZE CLASSES FOR XCODE 8](https://makeapppie.com/2016/09/05/an-introduction-to-size-classes-for-xcode-8/)
 
 为了避免屏幕尺寸碎片化带给开发者额外的巨大工作量，使得开发者可以仅仅在一个 storyboard 做出能够适配所有尺寸屏幕的App，Apple引入了**_auto Layout_** 。这使得很多原本需要开发者自行处理的UI设计工作被system负责起来，大大降低了开发者的工作量。
