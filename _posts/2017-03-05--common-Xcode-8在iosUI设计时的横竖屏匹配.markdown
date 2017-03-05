@@ -1,0 +1,43 @@
+# Xcode 8在iosUI设计时的横竖屏匹配问题:
+
+> 资料来源 [AN INTRODUCTION TO SIZE CLASSES FOR XCODE 8](https://makeapppie.com/2016/09/05/an-introduction-to-size-classes-for-xcode-8/)
+
+为了避免屏幕尺寸碎片化带给开发者额外的巨大工作量，使得开发者可以仅仅在一个 storyboard 做出能够适配所有尺寸屏幕的App，Apple引入了**_auto Layout_** 。这使得很多原本需要开发者自行处理的UI设计工作被system负责起来，大大降低了开发者的工作量。
+
+在iOS 8中，Apple提出了**_size classes_** ,这是一种允许我们在任何大小及方向的屏幕上依赖 _auto Layout_ 来描述UI设计的方法。Apple更改了部分 UIKit classes ，使它们依赖于 _size classes_ 。
+
+ **_size classes_** 包括 **compact** 和 **regular** 两种。因为用户在使用不同尺寸的设备时会有不同的拿持姿势和使用习惯，比如大多数人会单手使用iPhone SE，但很少有人会选择单手使用一个iPad。基于这一点，开发者很多时候需要根据不同尺寸的屏幕给同一个view设置不同的大小和位置。Apple为了解决这一问题（我觉得...），提出了以上两种标准以方便开发者。![size-classes](/Users/StoneN/Desktop/blogs/size-classes.png)
+
+
+
+在旧版本的Xcode中默认的 **_size classes_** 是 **Any** ，但在最新的Xcode 8中，Apple没有再使用 **Any** ，而是要求storyboard对应具体的设备，如下图。
+
+![view_as_bar](/Users/StoneN/Desktop/blogs/view_as_bar.png)
+
+在UI设计过程中，选择不同的 **Device** 及 **Orientation**，storyboard就会以对应的形式展现。
+
+图中**" iPhone 7(wC hC) "**就表示当前storyboard中模拟的就是水平的iPhone7屏幕。
+
+其中**" wC hC "**指的是 **_width：Compact； height：Regular_** ，这意味着你可以在该情况下为所有横屏的iphone(除7plus外)设计一个可以完美适配的UI。
+
+注意观察你会发现右下方有一个 **_Vary for Traits_** 按钮。点击它会弹出如下对话框：
+
+![varyForTraits](/Users/StoneN/Desktop/blogs/varyForTraits.png)
+
+这里的 **Width** 和 **Height** 其实是对应左边所选定的设备信息。
+
+1. 当你只选择Width时，如图「注意右上角**View as**对应的是**(wC hR)**」：![widthSelected](/Users/StoneN/Desktop/blogs/widthSelected.png)
+
+   这表示你希望对所有满足**Width：Compact且Height：Any**的情况设计统一适配的UI界面，而Xcode也用heightlight提醒你，当前正在对如图中所列出的14种情况设计独有的通用UI。
+
+2. 同理，只选择Height则代表你希望对所有满足 **Width：Any且Height：Regular** 的情况单独设计UI，如图：
+
+   ![heightSelected](/Users/StoneN/Desktop/blogs/heightSelected.png)
+
+3. 当同时选择两者时，如图：
+
+   ![bothSelected](/Users/StoneN/Desktop/blogs/bothSelected.png)
+
+
+
+这样，我们就可以根据自己的需要随心所欲的设计自己的App了。
