@@ -60,8 +60,8 @@ authors:
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
-# normal = 560px / large = 810px
-width: normal
+# normal = 560px / large = 1010px
+width: large
 
 # if you don't need pagination, comment the *paginate* configs below
 # paginate: 5
@@ -78,7 +78,7 @@ blog: true
 read-time: true
 
 # do you want to show the "tags" inside the posts?
-show-tags: false
+show-tags: true
 
 # related posts inside a post?
 related: true
