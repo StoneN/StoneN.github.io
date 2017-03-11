@@ -6,7 +6,6 @@ tag:
 - Xcode8
 - UI
 - 横竖屏
-projects: true
 hidden: true # don't count this post in blog pagination
 category: blog
 author: stonen

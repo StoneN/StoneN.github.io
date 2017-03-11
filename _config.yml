@@ -1,5 +1,5 @@
 # main text of home
-name: StoneNan
+name: StoneN
 bio: A Man who travels the world eating noodles
 
 # twitter summary info
@@ -43,10 +43,10 @@ instagram: stonen_xt
 # youtube: myyoutube
 # spotify: myspotify
 github: StoneN
-stackoverflow: 7583930/stonen
+# stackoverflow: 7583930/stonen
 # quora: userquora
 # reddit: username
-medium: stonen.xt
+# medium: stonen.xt
 # vimeo: myvimeo
 email: stonen.xt@gmail.com
 
@@ -57,17 +57,11 @@ authors:
         external-image: false
         picture: assets/images/profile.jpg
         twitter: StoneN_xt
-    jamesfoster:
-        name: James Foster
-        bio: A Man who develops software with coffee
-        external-image: false
-        picture: assets/images/james.jpg
-        twitter: jamesfoster
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: large
+width: normal
 
 # if you don't need pagination, comment the *paginate* configs below
 # paginate: 5
@@ -84,7 +78,7 @@ blog: true
 read-time: true
 
 # do you want to show the "tags" inside the posts?
-show-tags: true
+show-tags: false
 
 # related posts inside a post?
 related: true
@@ -93,7 +87,7 @@ related: true
 post-advance-links: [blog]
 
 # show author block at the end of a post ?
-show-author: true
+show-author: false
 
 # do you want some animations?
 animation: true
