@@ -1,0 +1,148 @@
+---
+title: "iOS UI 布局"
+layout: post
+date: 2017-03-11 23:30
+tag: iOS
+category: blog
+author: stonen
+---
+
+# UIStackView
+
+> **原文出自：**[**什么是UIStackView ?**](http://www.cnblogs.com/ChouDanDan/p/5209775.html)
+
+------
+
+## 什么是UIStackView？
+
+　　在`iOS9`中苹果在`UIKit`框架中引入了一个新的视图类`UIStackView`。`UIStackView`类可以帮我们布局UI控件，而我们不需要设置任何约束或设置很少的约束就可以，其他都由`UIStackView`帮我们自动完成了。
+
+`　　UIStackView`提供了两个方向的约束，垂直布局和水平布局，我们可以通过`UILayoutConstraintAxis`枚举值来查看两种布局方式。
+
+　　如果初学者来学习`UIStackView`比较抽象，不太好接触这个新的控件，而且很容易出错，先看一下下面这个GIF来初步了解一下这个控件吧。
+
+![850342-20160223141112818-1227778081](/assets/images/850342-20160223141112818-1227778081.gif)
+
+## UIStackView
+
+　　在`Interface Builder`中使用`UIStackView`就类似于使用一个UI控件一样，通过让将其他视图成为`UIStackView`的子视图来进行布局的，`UIStackView`也可以嵌套多个`UIStackView`。
+
+　　值得注意的是，`UIStackView`虽然继承自`UIView`，但是并不参与屏幕的渲染，重写`drawRect:`方法也是无效的。
+
+##### UIStackView继承链条，自身特性等信息![850342-20160223141214083-1640121682](/assets/images/850342-20160223141214083-1640121682.png)
+
+## 枚举值
+
+`　　Interface Builder`中的`UIStackView`控件，右侧设置面板中提供了一些选项，这些设置是对应着代码中的枚举值的：
+
+- Axis
+  `Horizontal -> UILayoutConstraintAxisHorizontal`
+  水平方向布局
+  `Vertical -> UILayoutConstraintAxisVertical`
+  垂直方向布局
+- Distribution
+  `Fill -> UIStackViewDistributionFill`
+  填充整个*UIStackView*，并且根据内部子视图尺寸对子视图尺寸进行动态调整。
+  `Fill Equally -> UIStackViewDistributionFillEqually`
+  根据视图大小平均分配*UIStackView*尺寸，等比例填充*UIStackView*，过程中会根据分配的大小改变子视图尺寸。
+  `Fill Proportionally -> UIStackViewDistributionFillProportionally`
+  根据之前的比例填充*UIStackView*。
+  `Equal Spacing -> UIStackViewDistributionEqualSpacing`
+  填充整个*UIStackView*，子视图没有占满*UIStackView*将会用空白平均填充子视图中间的间距，超出*UIStackView*将会根据*arrangedSubviews*数组下标压缩子视图。
+  `Equal Centering -> UIStackViewDistributionEqualCentering`
+  平均分配子视图得到每个视图的中心点，使用这个中心点来布局每个子视图，并且保持*spacing*距离，超出将会重新布局子视图，并压缩部分子视图。
+- Alignment
+  `Fill -> UIStackViewAlignmentFill`
+  视图纵向填充
+  `Top -> UIStackViewAlignmentTop`
+  视图向上对其(适用于*Horizontal*模式)
+  `Center -> UIStackViewAlignmentCenter`
+  视图居中对其
+  `Bottom -> UIStackViewAlignmentBottom`
+  视图向下对其(适用于*Horizontal*模式)
+  `First Baseline -> UIStackViewAlignmentFirstBaseline`
+  根据上方基线布局所有子视图的*y*值(适用于*Horizontal*模式)
+  `Last Baseline -> UIStackViewAlignmentLastBaseline`
+  根据下方基线布局所有子视图的*y*值(适用于*Horizontal*模式)
+  `trailing -> UIStackViewAlignmentTrailing`
+  视图向左对齐(适用于*Vertical*模式)
+  `leading -> UIStackViewAlignmentLeading`
+  视图向右对齐(适用于*Vertical*模式)
+- spacing
+  `spacing -> CGFloat spacing`
+  子控件之间的最小距离
+
+　　　　可以根据下面的图片结合上面的枚举值联系起来比较好理解
+
+![850342-20160223141315521-816832635](/assets/images/850342-20160223141315521-816832635.png)
+
+## arrangedSubviews数组
+
+`　　UIStackView`使用`arrangedSubviews`数组来管理子视图。需要注意的是这个数组是一个`readonly`的属性，我们需要调用方法对`arrangedSubviews`数组进行操作。
+
+　　初始化数组:
+`　　- (instancetype)initWithArrangedSubviews:(NSArray<__kindof UIView *> *)views;`
+　　添加子视图:
+`　　- (void)addArrangedSubview:(UIView *)view;`
+　　移除子视图:
+`　　- (void)removeArrangedSubview:(UIView *)view;`
+　　根据下标插入视图:
+`　　- (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex;`
+
+## 小试牛刀
+
+　　我们可以从`Interface Builder`右侧的操作面板中，选择`UIStackView`控件直接拖到`XIB`中。可以选择`Horizontal`和`Vertical`两个方向的`UIStackView`，也可以在拖到`XIB`中之后手动修改。
+
+![850342-20160223141431396-1614421270](/assets/images/850342-20160223141431396-1614421270.png)
+
+​	然后将两个`View`拖到这个`UIStackView`中，父视图也可以将`UIStackView`作为子视图来进行多层`UIStackView`嵌套，这也是苹果推荐的做法。
+
+![850342-20160223141511505-590301401](/assets/images/850342-20160223141511505-590301401.png)
+
+​	打开右侧设置面板来设置`UIStackView`的一些属性，达到更好的布局效果。
+
+![850342-20160223141601068-641465840](/assets/images/850342-20160223141601068-641465840.png)
+
+　　除了上面的方法也可以在`XIB`中直接选择多个`View`，然后点击右下方的`Stack`按钮，系统会自动推断布局方式，帮我们自动布局子视图，我们可以在系统布局之后在手动进行调整。
+
+![850342-20160223141629536-2074680886](/assets/images/850342-20160223141629536-2074680886.png)
+
+　　代码布局其实本质上就是对数组进行操作，数组中存储的是`UIStackView`的子视图。然后通过设置`UIStackView`的枚举值属性进行页面排布。代码布局的方式这里就不演示了。。。😉
+
+## UIStackView和NSLayoutConstraint布局转换
+
+　　如果你之前的项目中已经有约束，只需要将添加`UIStackView`管理UI控件约束清除。选中需要添加的UI控件，点击右下方的`Stack`按钮就可以。
+
+![850342-20160223141705661-808048020](/assets/images/850342-20160223141705661-808048020.png)
+
+------
+
+> **以上原文出自：**[**什么是UIStackView ?**](http://www.cnblogs.com/ChouDanDan/p/5209775.html)
+
+------
+
+
+
+> 以下内容摘自[泊学网](https://boxueio.com/series/started-with-ui-tableview/ebook/69)
+
+### Axis & Alignment
+
+- 根据我们把UI控件排列进 **UIStackView** 的方式，**UIStackView** 定义了两个**_Axis_**：
+
+  ![bo-reading-uitableview-demo4-21@2x](/assets/images/bo-reading-uitableview-demo4-21@2x.jpg)
+
+- 无论是水平还是垂直排列，当排列进 **UIStackView** 的控件大小不同时，就要通过 **_Alignment_** 指定他们对齐的方式：
+
+  - 当 “**Horizental**” 排列时，**_Alignment_** 支持 **6** 种对齐方式：
+
+    ![bo-reading-uitableview-demo4-22@2x](/assets/images/bo-reading-uitableview-demo4-22@2x.jpg) 
+
+  - 当 “**Vertical**” 排列时，**_Alignment_** 支持 **4** 种对齐方式：
+
+    ![bo-reading-uitableview-demo4-23@2x](/assets/images/bo-reading-uitableview-demo4-23@2x.jpg)
+
+### Content hugging & Content compression resistance
+
+- 简单来说，**_content hugging priority_** 表示了一个对象**"拒绝变大"的强烈程度**，值越高，就表示对象在水平或垂直方向拒绝变大的意愿越强烈；而 **_content compression resistance_** 则表示了一个对象**"拒绝被压缩"的强烈程度**，值越高，就表示对象在水平或垂直方向拒绝被压缩的意愿越强烈。
+
+  ![bo-reading-uitableview-demo4-25@2x](/assets/images/bo-reading-uitableview-demo4-25@2x.jpg)
